@@ -1,0 +1,6 @@
+<div class="container" *ngIf="quizForm">
+    <h1 class="text-center mt-4">QUIZ FORM</h1>
+    <form [formGroup]="quizForm">
+        <app-quiz-question *ngFor="let dt of quizQuestions" [question]="dt" [form]="quizForm"></app-quiz-question>
+    </form>
+</div>
