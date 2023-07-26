@@ -14,7 +14,7 @@ export class QuizService {
     return this.http.get<Question[]>("https://raw.githubusercontent.com/ShaneWatson7961/quizData/main/quizInterview.json");
   }
 
-  // public getQuizQuestions(): Observable<Question[]> {
-  //   return this.http.get<Question[]>("http://localhost:3000/question");
-  // }
+  public getQuizQuestions(): Observable<Question[]> {
+    return this.http.get<Question[]>("http://localhost:3000/question");
+  }
 }

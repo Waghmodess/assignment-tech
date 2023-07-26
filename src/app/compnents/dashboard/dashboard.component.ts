@@ -23,7 +23,7 @@ export class DashboardComponent {
   }
 
   private fetchQuizData(): void {
-    this.service.getQuizQuestion().subscribe((res) => {
+    this.service.getQuizQuestions().subscribe((res) => {
       this.quizQuestions = res;
     }, (err) => {
       console.log(err);
