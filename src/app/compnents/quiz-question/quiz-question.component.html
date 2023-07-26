@@ -5,15 +5,24 @@
             <mat-option *ngFor="let option of question.options" [value]="option">{{option}}</mat-option>
         </mat-select>
     </mat-form-field>
-
     <div *ngIf="selectedQuestion === question.options[0] && question.subQue">
-        <mat-label>{{ question.subQue[0].question }}</mat-label>
-        <mat-form-field appearance="outline">
-            <mat-select [(ngModel)]="selectedSubQuestion" formControlName="subQue">
-                <mat-option *ngFor="let subOption of question.subQue[0].options" [value]="subOption">
-                    {{ subOption }}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
+        <div *ngFor="let sub of question.subQue">
+            <div *ngIf="sub.options.length > 0 ">
+                <mat-label>{{ question.subQue[0].question }}</mat-label>
+                <mat-form-field appearance="outline">
+                    <mat-select [(ngModel)]="selectedSubQuestion" formControlName="subQue">
+                        <mat-option *ngFor="let subOption of sub.options" [value]="subOption">
+                            {{ subOption }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div *ngIf="sub.options.length == 0">
+                <mat-label>{{sub.question}}</mat-label>
+                <mat-form-field appearance="outline">
+                    <input matInput formControlName="subQue">
+                </mat-form-field>
+            </div>
+        </div>
     </div>
 </div>

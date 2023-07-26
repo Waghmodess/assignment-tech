@@ -1,20 +1,54 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Question } from '../model/quiz.model';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuizService {
 
-  constructor(private http: HttpClient) { }
+  public question = [
+    {
+      queType: "Main",
+      type: "dropdown",
+      question: "Which company was established in 1976 by Steve Jobs ?",
+      options: [
+        "Apple",
+        "Microsoft",
+        "Atari"
+      ],
+      subQue: [
+        {
+          queType: "Sub",
+          showIf: "Apple",
+          type: "dropdown",
+          question: "What is the most common way to iterate through an array ?",
+          options: [
+            "For loop",
+            "If Statements"
+          ]
+        },
+        {
+          queType: "Sub",
+          showIf: "Apple",
+          type: "textinput",
+          question: "Which type of code is represented in 0 and 1 ?",
+          options: []
+        }
+      ]
+    },
+    {
+      queType: "Main",
+      type: "dropdown",
+      question: "What is use for CSS ?",
+      options: [
+        "Styling websites",
+        "JS logic",
+        "Database"
+      ]
+    }
+  ]
 
-  public getQuizQuestion(): Observable<Question[]> {
-    return this.http.get<Question[]>("https://raw.githubusercontent.com/ShaneWatson7961/quizData/main/quizInterview.json");
+  public getQuizQuestion() {
+    return of(this.question);
   }
-
-  // public getQuizQuestions(): Observable<Question[]> {
-  //   return this.http.get<Question[]>("http://localhost:3000/question");
-  // }
 }

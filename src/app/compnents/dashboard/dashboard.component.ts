@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Question } from 'src/app/model/quiz.model';
 import { QuizService } from 'src/app/service/quiz.service';
 
 @Component({
@@ -10,7 +9,7 @@ import { QuizService } from 'src/app/service/quiz.service';
 })
 export class DashboardComponent {
   public quizForm: FormGroup;
-  public quizQuestions: Question[];
+  public quizQuestions: any[];
 
   constructor(private formBuilder: FormBuilder, private service: QuizService) { }
 
